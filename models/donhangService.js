@@ -3,8 +3,8 @@ const db = require('./db');
 
 const CreateNewOder = async (data) => {
     try {
-        await db.execute(`INSERT INTO donHang (tenKhach, SDT, diaChi, hinhThucThanhToan, ngayTao, idTaiKhoan) VALUES
-        (?, ?, ?, ?, ?, ?)`,
+        await db.execute(`INSERT INTO donHang (id, tenKhach, SDT, diaChi, hinhThucThanhToan, ngayTao, idTaiKhoan) VALUES
+        (?, ?, ?, ?, ?, ?, ?)`,
             data);
         return true;
     } catch (error) {

@@ -33,10 +33,10 @@ router.get('/read-list-category', readListCategory);
 router.post('/update-category', updateCategory);
 router.post('/delete-category', deleteCategory);
 
-router.post('/create-oder', createNewOder);
-router.get('/read-list-oder', readListOder);
-router.post('/update-oder', updateOder);
-router.post('/delete-oder', deleteOder);
+router.post('/create-order', createNewOder);
+router.get('/read-list-order', readListOder);
+router.post('/update-order', updateOder);
+router.post('/delete-order', deleteOder);
 
 router.post('create-account', createNewAccount);
 router.get('/read-list-account', readListAccount);
