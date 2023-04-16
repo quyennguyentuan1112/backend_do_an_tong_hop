@@ -1,6 +1,6 @@
 const db = require('./db');
 
-const CreateNewOderProduct = async (data) => {
+const CreateNewOrderProduct = async (data) => {
     try {
         await db.execute(`INSERT INTO datHang (idSanPham, idDonHang, soLuong) VALUES
         (?, ?, ?)`,
@@ -13,7 +13,7 @@ const CreateNewOderProduct = async (data) => {
 }
 
 
-const ReadListOderProduct = async () => {
+const ReadListOrderProduct = async () => {
     try {
         const [rows, fields] = await db.execute(`SELECT * FROM datHang`);
         return rows;
@@ -23,7 +23,7 @@ const ReadListOderProduct = async () => {
     }
 }
 
-const UpdateOderProduct = async (data) => {
+const UpdateOrderProduct = async (data) => {
     try {
         await db.execute(`UPDATE datHang SET soLuong = ? WHERE idSanPham = ? AND idDonHang = ?`, data);
         return true;
@@ -34,7 +34,7 @@ const UpdateOderProduct = async (data) => {
 }
 
 
-const DeleteOderProduct = async (id) => {
+const DeleteOrderProduct = async (id) => {
     try {
         await db.execute(`DELETE FROM donHang WHERE idSanPham = ? AND idDonHang = ?`, id);
         return true;
@@ -46,8 +46,8 @@ const DeleteOderProduct = async (id) => {
 
 
 module.exports = {
-    CreateNewOderProduct : CreateNewOderProduct,
-    ReadListOderProduct : ReadListOderProduct,
-    UpdateOderProduct : UpdateOderProduct,
-    DeleteOderProduct : DeleteOderProduct,
+    CreateNewOrderProduct : CreateNewOrderProduct,
+    ReadListOrderProduct : ReadListOrderProduct,
+    UpdateOrderProduct : UpdateOrderProduct,
+    DeleteOrderProduct : DeleteOrderProduct,
 };

@@ -1,7 +1,7 @@
 const db = require('./db');
 
 
-const CreateNewOder = async (data) => {
+const CreateNewOrder = async (data) => {
     try {
         await db.execute(`INSERT INTO donHang (id, tenKhach, SDT, diaChi, hinhThucThanhToan, ngayTao, idTaiKhoan) VALUES
         (?, ?, ?, ?, ?, ?, ?)`,
@@ -14,17 +14,29 @@ const CreateNewOder = async (data) => {
 }
 
 
-const ReadListOder = async () => {
+const ReadListOrder = async () => {
     try {
         const [rows, fields] = await db.execute(`SELECT * FROM donHang`);
         return rows;
     } catch (error) {
-        console.error(err);
-        throw err;
+        console.error(error);
+        throw error;
     }
 }
 
-const UpdateOder = async (data) => {
+const ReadOneOrder = async (id) => {
+    try {
+        const [rows, fields] = await db.execute(`
+        SELECT * FROM donHang WHERE id = ?
+        `, id);
+        return rows;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
+const UpdateOrder = async (data) => {
     try {
         await db.execute(`UPDATE donHang SET tenKhach = ?, SDT = ?, diaChi = ?, hinhThucThanhToan = ?, ngayTao = ?, idTaiKhoan = ? WHERE id = ?`, data);
         return true;
@@ -34,7 +46,7 @@ const UpdateOder = async (data) => {
     }
 }
 
-const DeleteOder = async (id) => {
+const DeleteOrder = async (id) => {
     try {
         await db.execute(`DELETE FROM donHang WHERE id = ?`, id);
         return true;
@@ -45,8 +57,9 @@ const DeleteOder = async (id) => {
 }
 
 module.exports = {
-    CreateNewOder : CreateNewOder,
-    ReadListOder : ReadListOder,
-    UpdateOder : UpdateOder,
-    DeleteOder : DeleteOder,
+    CreateNewOrder : CreateNewOrder,
+    ReadListOrder : ReadListOrder,
+    UpdateOrder : UpdateOrder,
+    DeleteOrder : DeleteOrder,
+    ReadOneOrder : ReadOneOrder,
 };
