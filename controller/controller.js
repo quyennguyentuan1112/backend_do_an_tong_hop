@@ -4,6 +4,7 @@ const {
     ReadListProduct,
     UpdateProduct,
     DeleteProduct,
+    GetDetailProduct
 } = require('../models/sanphamService');
 
 const {
@@ -59,6 +60,15 @@ const readListProduct = async (req, res) => {
     }
 };
 
+const getDetail = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const data = await GetDetailProduct([id]);
+        res.json({ success: true, data});
+    } catch (error) {
+        console.error(error);
+    }
+}
 const updateProduct = async (req, res) => {
     const { id, ten, soLuong, moTa, donVi, anh, giaNhap, giaBan, idLoaiSanPham } = req.body;
     const data = [ten, soLuong, moTa, donVi, anh, giaNhap, giaBan, idLoaiSanPham, id];
@@ -82,7 +92,8 @@ const deleteProduct = async (req, res) => {
         console.error(error);
     }
 };
- 
+
+
 const findProductByName = async (req, res) => {
     try {
         const {nameFind} = req.body;
@@ -324,6 +335,7 @@ module.exports = {
     readListProduct: readListProduct,
     updateProduct: updateProduct,
     deleteProduct: deleteProduct,
+    getDetail: getDetail,
     findProductByName : findProductByName,
 
     createNewCategory: createNewCategory,

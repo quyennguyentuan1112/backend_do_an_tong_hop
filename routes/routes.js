@@ -6,6 +6,7 @@ const {
     readListProduct,
     updateProduct,
     deleteProduct,
+    getDetail,
     findProductByName,
 
     createNewCategory,
@@ -34,6 +35,7 @@ router.get('/read-list-product', readListProduct);// gọi dữ liệu danh sác
 router.post('/update-product', updateProduct);// update sản phẩm
 router.post('/delete-product', deleteProduct);// xóa sản phẩm theo id
 router.post('/find-product-by-name', findProductByName); //tìm kiếm sản phẩm theo tên
+router.get('/get-detail-product/:id',getDetail)
 
 router.post('/create-category', createNewCategory);
 router.get('/read-list-category', readListCategory); // gọi dữ liệu danh sách loại sản phẩm
