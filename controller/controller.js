@@ -27,6 +27,7 @@ const {
     DeleteAccount,
     UpdateAccount,
     ReadListAccount,
+    LoginCheck,
 } = require('../models/taikhoanService');
 
 const dathangService = require('../models/dathangService');
@@ -273,6 +274,30 @@ const deleteAccount = async (req, res) => {
         console.error(error);
     }
 };
+
+const logincheck = async (req, res) => {
+    const { userName, passWord } = req.body;
+    try {
+      const customer = await LoginCheck([userName]);
+  
+      if (customer[0].passWord === passWord) {
+        const result = {
+          // email: customer[0].email,
+          username: customer[0].userName,
+          name: customer[0].tenNhanVien,
+          id: customer[0].id,
+        };
+        res.json({
+          message: "Đăng nhập thành công",
+          result,
+        });
+      } else {
+        res.status(403).send({ message: "Tài khoản hoặc mật khẩu không đúng" });
+      }
+    } catch (error) {
+      res.status(403).send("Tài khoản hoặc mật khẩu không đúng");
+    }
+  };
 ////////////////////////////////////////
 
 const adminCheckOneOrder = async (req, res) => {
@@ -352,6 +377,7 @@ module.exports = {
     readListAccount: readListAccount,
     updateAccount: updateAccount,
     deleteAccount: deleteAccount,
+    logincheck: logincheck,
 
     adminCheckOneOrder : adminCheckOneOrder,
     adminManageOrder : adminManageOrder,

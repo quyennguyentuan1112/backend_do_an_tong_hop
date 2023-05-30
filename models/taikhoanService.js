@@ -43,10 +43,20 @@ const DeleteAccount= async (id) => {
         return false;
     }
 }
-
+const LoginCheck = async (data) => {
+    try{
+        const [row,fields] = await db.execute(`SELECT * FROM  taiKhoan WHERE userName = ?`,data);
+        return row;
+    }
+    catch(error){
+        console.error(error)
+        return false;
+    }
+}
 module.exports = {
     CreateNewAccount : CreateNewAccount,
     ReadListAccount : ReadListAccount,
     UpdateAccount : UpdateAccount,
     DeleteAccount : DeleteAccount,
+    LoginCheck: LoginCheck,
 };

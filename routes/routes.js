@@ -23,6 +23,7 @@ const {
     readListAccount,
     updateAccount,
     deleteAccount,
+    logincheck,
 
     adminCheckOneOrder,
     adminManageOrder,
@@ -51,6 +52,7 @@ router.post('create-account', createNewAccount);
 router.get('/read-list-account', readListAccount);
 router.post('/update-account', updateAccount);
 router.post('/delete-account', deleteAccount);
+router.post('/login-account',logincheck);
 
 router.post('/admin-check-order', adminCheckOneOrder); // lấy dữ liệu chi tiết của 1 đơn hàng
 router.get('/admin-manage-order', adminManageOrder); // lấy dữ liệu của trang quản lý đơn hàng
