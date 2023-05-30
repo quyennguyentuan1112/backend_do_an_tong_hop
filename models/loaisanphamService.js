@@ -43,10 +43,9 @@ const DeleteCategory = async (id) => {
         return false;
     }
 }
-
 module.exports = {
     CreateNewCategory: CreateNewCategory,
     DeleteCategory: DeleteCategory,
     UpdateCategory: UpdateCategory,
-    ReadListCategory: ReadListCategory,
+    ReadListCategory: ReadListCategory
 };
